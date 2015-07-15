@@ -1,0 +1,61 @@
+#
+# PARAMETERS
+#
+parameters:
+  homepage_message: It workses!
+  hello_world_command_message: Hello, world!
+
+#
+# AUTOWIRING SETTINGS
+#
+autowiring:
+  ignored_services:
+    - /^debug\./
+    - /^file/
+    - /^form\./
+    - /^fragment\./
+    - kernel
+    - http_kernel
+    - /^monolog\./
+    - /^request/
+    - /^router/
+    - /^security\./
+    - service.googleAnalyticsClient
+    - service.googleAnalyticsService
+    - /^templating/
+    - /^translat/
+    - /^view\./
+
+  #preferred_services:
+  #  Psr\Log\LoggerInterface: logger
+  #  Monolog\Logger: logger
+  #  Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface: session.storage.native
+
+  # TODO: enable this fast_annotation_checks for BunnyBundle
+  #fast_annotation_checks: [ @Consumer, @Producer ]
+
+  autoscan_psr4:
+    App: %kernel.root_dir%/src/App
+
+#
+# FRAMEWORK SETTINGS
+#
+framework:
+  session:
+    name: "PHPSESSID"
+    cookie_lifetime: 0 # session cookie
+    cookie_path: /
+    #cookie_domain: "TODO"
+    #cookie_secure: true # TODO: enable to HTTPS-only session cookies
+    cookie_httponly: true
+  secret: "ThisIsNotVerySecure" # FIXME: change to randomly generated string
+  router:
+    resource: "%kernel.root_dir%/conf/routing.yml"
+    strict_requirements: ~
+  form: ~
+  default_locale:  "cs"
+  trusted_hosts: ~
+  trusted_proxies: ~
+  session:
+    handler_id: ~
+  http_method_override: true

@@ -1,0 +1,11 @@
+#!/usr/bin/env php
+<?php
+namespace App;
+
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+
+require_once __DIR__ . "/vendor/autoload.php";
+
+$kernel = new AppKernel("console", true);
+$app = new Application($kernel);
+$app->run();

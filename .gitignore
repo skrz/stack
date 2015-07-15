@@ -1,0 +1,9 @@
+/.idea
+/cache
+/composer.lock
+/composer.phar
+/gen-src/**/DependencyInjection
+/gen-src/*.meta
+/log
+/node_modules
+/vendor

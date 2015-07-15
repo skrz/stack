@@ -1,0 +1,4 @@
+homepage:
+  path: /
+  defaults:
+    _controller: controller.homepage:homepageAction
