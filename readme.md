@@ -60,16 +60,20 @@ Every message needs its consumer. This one only writes out its contents so far. 
 	$ php console bunny:setup
 	```
 3. Run BunnyConsumer (for production manage of consumers you can use [Supervisor](http://supervisord.org/))
+
 	```sh
-    $ php console bunny:consumer bunny
+	$ php console bunny:consumer bunny
+	```
 4. To push message to `change` exchange run task PushToPipeline
+
 	```sh
 	$ php console task:pipeline:push
 	```
-4. In bunny consumer log you can see that message was received and processed
+5. In bunny consumer log you can see that message was received and processed
+
 	```sh
 	[2015-07-29 22:54:11] App.DEBUG: Got message 'Hi there!' created at 2015-07-29 22:54:11 via application App on host Skrz.local Acking...
-    ```
+	```
 
 
 ## TODO
