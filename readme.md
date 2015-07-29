@@ -56,6 +56,7 @@ Every message needs its consumer. This one only writes out its contents so far. 
 ### Basic MQ example
 1. First of all you need to install RabbitMQ. See official instructions [here](https://www.rabbitmq.com/download.html)
 2. After installation setup the exchange and queue with command
+
 	```sh
 	$ php console bunny:setup
 	```
