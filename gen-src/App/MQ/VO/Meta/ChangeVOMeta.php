@@ -7,7 +7,7 @@ use Skrz\Meta\MetaInterface;
 use Skrz\Meta\PHP\PhpMetaInterface;
 
 /**
- * Meta class for \Skrz\MQ\VO\ChangeVO
+ * Meta class for \App\MQ\VO\ChangeVO
  *
  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
  * !!!                                                     !!!
@@ -61,7 +61,7 @@ class ChangeVOMeta extends ChangeVO implements MetaInterface, PhpMetaInterface, 
 
 
 	/**
-	 * Creates new instance of \Skrz\MQ\VO\ChangeVO
+	 * Creates new instance of \App\MQ\VO\ChangeVO
 	 *
 	 * @throws \InvalidArgumentException
 	 *
@@ -95,7 +95,7 @@ class ChangeVOMeta extends ChangeVO implements MetaInterface, PhpMetaInterface, 
 
 
 	/**
-	 * Resets properties of \Skrz\MQ\VO\ChangeVO to default values
+	 * Resets properties of \App\MQ\VO\ChangeVO to default values
 	 *
 	 *
 	 * @param ChangeVO $object
@@ -107,7 +107,7 @@ class ChangeVOMeta extends ChangeVO implements MetaInterface, PhpMetaInterface, 
 	public static function reset($object)
 	{
 		if (!($object instanceof ChangeVO)) {
-			throw new \InvalidArgumentException('You have to pass object of class Skrz\MQ\VO\ChangeVO.');
+			throw new \InvalidArgumentException('You have to pass object of class App\MQ\VO\ChangeVO.');
 		}
 		$object->application = NULL;
 		$object->datetime = NULL;
@@ -117,7 +117,7 @@ class ChangeVOMeta extends ChangeVO implements MetaInterface, PhpMetaInterface, 
 
 
 	/**
-	 * Creates \Skrz\MQ\VO\ChangeVO object from array
+	 * Creates \App\MQ\VO\ChangeVO object from array
 	 *
 	 * @param array $input
 	 * @param string $group
