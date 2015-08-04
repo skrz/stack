@@ -5,6 +5,20 @@ parameters:
   homepage_message: It workses!
   hello_world_command_message: Hello, world!
 
+  #settings
+  application.name: App
+  application.base_domain: localhost:8080
+  email.developer: dev@localhost
+  rotating_log_max_files: 30
+
+  # bunny (RabbitMQ)
+  bunny.host: localhost
+  bunny.port: 5672
+  bunny.vhost: /
+  bunny.user: guest
+  bunny.password: guest
+  bunny.heartbeat: 900 # 15 minutes
+
 #
 # AUTOWIRING SETTINGS
 #
@@ -20,22 +34,40 @@ autowiring:
     - /^request/
     - /^router/
     - /^security\./
-    - service.googleAnalyticsClient
-    - service.googleAnalyticsService
     - /^templating/
     - /^translat/
     - /^view\./
 
-  #preferred_services:
-  #  Psr\Log\LoggerInterface: logger
-  #  Monolog\Logger: logger
-  #  Symfony\Component\HttpFoundation\Session\Storage\SessionStorageInterface: session.storage.native
+  preferred_services:
+    Psr\Log\LoggerInterface: logger
+    Monolog\Logger: logger
 
-  # TODO: enable this fast_annotation_checks for BunnyBundle
-  #fast_annotation_checks: [ @Consumer, @Producer ]
+  fast_annotation_checks: [ @Consumer, @Producer, @Task ]
 
   autoscan_psr4:
     App: %kernel.root_dir%/src/App
+
+#
+# BUNNY SETTINGS
+#
+bunny:
+  host: %bunny.host%
+  port: %bunny.port%
+  vhost: %bunny.vhost%
+  user: %bunny.user%
+  password: %bunny.password%
+
+  exchanges:
+    change:
+      durable: true
+      type: topic
+
+  queues:
+    bunny_queue:
+      durable: true
+      bindings:
+        - exchange: change
+          routing_key: "#"
 
 #
 # FRAMEWORK SETTINGS
@@ -59,3 +91,36 @@ framework:
   session:
     handler_id: ~
   http_method_override: true
+
+
+#
+# MONOLOG SETTINGS
+#
+monolog:
+  handlers:
+    main:
+      type: service
+      id: logger.application
+      level: debug
+
+services:
+  service_container:
+      class: Symfony\Component\DependencyInjection\ContainerInterface
+      synthetic: true
+
+  #
+  # LOGGING
+  #
+  logger:
+    class: Skrz\DependencyInjection\Logging\Logger
+    arguments:
+      - %application.name%
+
+  logger.application:
+    class: Monolog\Handler\RotatingFileHandler
+    arguments:
+      - "%kernel.logs_dir%/%application.name%.log"
+      - 30
+
+  loggerProcessor.introspection:
+      class: Skrz\DependencyInjection\Logging\IntrospectionProcessor

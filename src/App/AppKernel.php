@@ -2,8 +2,10 @@
 namespace App;
 
 use Skrz\Bundle\AutowiringBundle\SkrzAutowiringBundle;
+use Skrz\Bundle\BunnyBundle\SkrzBunnyBundle;
 use Skrz\Kernel\SkrzKernel;
 use Symfony\Bundle\FrameworkBundle\FrameworkBundle;
+use Symfony\Bundle\MonologBundle\MonologBundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class AppKernel extends SkrzKernel
@@ -14,8 +16,9 @@ class AppKernel extends SkrzKernel
 		return [
 			new FrameworkBundle(),
 			new SkrzAutowiringBundle(),
-
+			new SkrzBunnyBundle(),
 			new AppBundle(),
+			new MonologBundle(),
 		];
 	}
 

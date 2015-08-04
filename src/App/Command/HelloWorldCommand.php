@@ -4,7 +4,6 @@ namespace App\Command;
 use Skrz\Bundle\AutowiringBundle\Annotation\Component;
 use Skrz\Bundle\AutowiringBundle\Annotation\Value;
 use Skrz\Console\AbstractCommand;
-use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
@@ -22,6 +21,11 @@ class HelloWorldCommand extends AbstractCommand
 	 * @Value("%hello_world_command_message%")
 	 */
 	public $message;
+
+	protected function configure()
+	{
+		$this->setDescription("Greets the whole world!");
+	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
 	{

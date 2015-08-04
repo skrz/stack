@@ -10,6 +10,7 @@
     }
   ],
   "require": {
+    "monolog/monolog": "~1.11",
     "skrz/autowiring-bundle": "~1.1",
     "skrz/bunny-bundle": "~1.1",
     "skrz/meta": "~1.2",
@@ -20,6 +21,7 @@
     "symfony/framework-bundle": "~2.7",
     "symfony/http-foundation": "~2.7",
     "symfony/http-kernel": "~2.7",
+    "symfony/monolog-bundle": "~2.7",
     "symfony/routing": "~2.7",
     "symfony/security": "~2.7",
     "symfony/security-bundle": "~2.7",
