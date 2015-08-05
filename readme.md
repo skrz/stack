@@ -1,6 +1,6 @@
 # Skrz\Stack
 
-[![Downloads this Month](https://img.shields.io/packagist/dm/skrz/stack.svg)](https://packagist.org/packages/skrz/meta)
+[![Downloads this Month](https://img.shields.io/packagist/dm/skrz/stack.svg)](https://packagist.org/packages/skrz/stack)
 
 > Minimal @symfony installation with @SkrzCzDev's goodies
 
@@ -49,9 +49,9 @@ Every task extends [AbstractTask Class](https://github.com/skrz/stack/tree/maste
 
 This task calls pushes message via ChangeProducer to your RabbitMQ. Uses `@Task` annotation.
 ##### [ChangeProducer](https://github.com/skrz/stack/tree/master/src/App/MQ/Producer/ChangeProducer.php)
-Shows how to push a message to MQ's exchange. Uses `@ProducerAnnotation`.
+Shows how to push a message to MQ's exchange. Uses `@Producer` annotation`.
 ##### [BunnyConsumer](https://github.com/skrz/stack/tree/master/src/App/MQ/Consumer/BunnyConsumer.php)
-Every message needs its consumer. This one only writes out its contents so far. Uses `@ConsumerAnnotation`.
+Every message needs its consumer. This one only writes out its contents so far. Uses `@Consumer` annotation.
 
 ### Basic MQ example
 1. First of all you need to install RabbitMQ. See official instructions [here](https://www.rabbitmq.com/download.html)
