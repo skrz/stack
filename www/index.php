@@ -8,7 +8,7 @@ require_once __DIR__ . "/../vendor/autoload.php";
 
 $env = isset($_SERVER["APP_ENV"]) ? $_SERVER["APP_ENV"] : "prod";
 
-Debugger::enable($env === "dev", __DIR__ . "/../log");
+Debugger::enable($env !== "dev", __DIR__ . "/../log");
 
 $request = Request::createFromGlobals();
 $kernel = new AppKernel($env, $env === "dev");
